@@ -5,6 +5,7 @@ import ServicesSection from "@/components/ServicesSection.jsx";
 import PregnancyCalculator from "@/components/PregnancyCalculator.jsx";
 import DietYogaSection from "@/components/DietYogaSection.jsx";
 import VaccinationTracker from "@/components/VaccinationTracker.jsx";
+import HospitalLocator from "@/components/HospitalLocator.jsx";
 import WhyChooseUs from "@/components/WhyChooseUs.jsx";
 import TestimonialsSection from "@/components/TestimonialsSection.jsx";
 import ContactSection from "@/components/ContactSection.jsx";
@@ -17,10 +18,11 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
+      <ServicesSection />
       <PregnancyCalculator />
       <DietYogaSection />
       <VaccinationTracker />
-      <ServicesSection />
+      <HospitalLocator />
       <WhyChooseUs />
       <TestimonialsSection />
       <ContactSection />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronRight, Activity } from "lucide-react";
+import { ChevronRight, Activity, AlertTriangle } from "lucide-react";
 
 const PregnancyCalculator = () => {
   const [lastPeriod, setLastPeriod] = useState("");
@@ -10,7 +10,7 @@ const PregnancyCalculator = () => {
     
     const lmpDate = new Date(lastPeriod);
     const dueDate = new Date(lmpDate);
-    dueDate.setDate(dueDate.getDate() + 280); // 40 weeks
+    dueDate.setDate(dueDate.getDate() + 280);
     
     const today = new Date();
     const diffTime = dueDate - today;
@@ -37,17 +37,17 @@ const PregnancyCalculator = () => {
   const trimesterInfo = {
     1: {
       title: "First Trimester",
-      tips: ["Take folic acid supplements", "Stay hydrated", "Get plenty of rest", "Avoid alcohol & smoking"],
+      tips: ["Regular checkups recommended", "Take folic acid supplements", "Stay hydrated", "Avoid alcohol & smoking"],
       color: "coral"
     },
     2: {
       title: "Second Trimester", 
-      tips: ["Continue prenatal vitamins", "Start gentle exercises", "Plan your nursery", "Schedule anatomy scan"],
+      tips: ["Continue prenatal vitamins", "Schedule anatomy scan", "Gentle exercises with doctor advice", "Monitor weight gain"],
       color: "mint"
     },
     3: {
       title: "Third Trimester",
-      tips: ["Prepare hospital bag", "Practice breathing exercises", "Monitor baby movements", "Rest when needed"],
+      tips: ["Prepare hospital bag", "Regular fetal monitoring", "Schedule delivery consultation", "Rest when needed"],
       color: "lavender"
     }
   };
@@ -64,9 +64,9 @@ const PregnancyCalculator = () => {
               </div>
               <div>
                 <h3 className="text-xl font-display font-bold text-foreground">
-                  Due Date Calculator
+                  Delivery Date Estimator
                 </h3>
-                <p className="text-muted-foreground text-sm">Know your expected delivery date</p>
+                <p className="text-muted-foreground text-sm">Estimate your expected delivery date</p>
               </div>
             </div>
 
@@ -87,16 +87,15 @@ const PregnancyCalculator = () => {
                 onClick={calculateDueDate}
                 className="btn-primary w-full flex items-center justify-center gap-2"
               >
-                Calculate Due Date
+                Calculate Estimated Date
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Results */}
             {result && (
               <div className="mt-8 space-y-4 animate-fade-in">
                 <div className="bg-card rounded-2xl p-6 text-center">
-                  <p className="text-muted-foreground text-sm mb-1">Your Expected Due Date</p>
+                  <p className="text-muted-foreground text-sm mb-1">Estimated Due Date</p>
                   <h4 className="text-2xl font-display font-bold text-primary">
                     {result.dueDate}
                   </h4>
@@ -116,6 +115,14 @@ const PregnancyCalculator = () => {
                     <p className="text-xs text-accent-foreground">Days Left</p>
                   </div>
                 </div>
+
+                {/* Disclaimer */}
+                <div className="bg-peach rounded-xl p-4 flex items-start gap-3">
+                  <AlertTriangle className="w-5 h-5 text-coral-dark flex-shrink-0 mt-0.5" />
+                  <p className="text-xs text-coral-dark">
+                    This is an estimated date for general awareness only. Please consult your doctor for accurate delivery date prediction.
+                  </p>
+                </div>
               </div>
             )}
           </div>
@@ -124,14 +131,14 @@ const PregnancyCalculator = () => {
           <div className="space-y-6">
             <div>
               <span className="inline-block bg-mint-light text-mint-dark px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                Pregnancy Guide
+                Pregnancy Month Guide
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-                Your Journey Through{" "}
-                <span className="text-gradient">Each Trimester</span>
+                Trimester-Wise{" "}
+                <span className="text-gradient">Information</span>
               </h2>
               <p className="text-muted-foreground text-lg">
-                Understand what's happening at each stage and get personalized tips for a healthy pregnancy.
+                Simple, general information about each stage of pregnancy to help you stay informed.
               </p>
             </div>
 
@@ -141,7 +148,7 @@ const PregnancyCalculator = () => {
                   key={num}
                   className={`rounded-2xl p-6 border-2 transition-all ${
                     result?.trimester === parseInt(num) 
-                      ? `border-primary bg-${info.color}-light shadow-medium` 
+                      ? `border-primary shadow-medium` 
                       : 'border-border bg-card hover:border-primary/30'
                   }`}
                 >
@@ -170,6 +177,15 @@ const PregnancyCalculator = () => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Disclaimer */}
+            <div className="bg-muted rounded-2xl p-4 flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-muted-foreground">
+                <strong>Disclaimer:</strong> All information provided is for general awareness only 
+                and does not replace professional medical consultation. Always consult your doctor.
+              </p>
             </div>
           </div>
         </div>

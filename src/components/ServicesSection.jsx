@@ -1,10 +1,10 @@
 import { 
-  Baby, 
   Heart, 
+  Baby, 
   Stethoscope, 
-  Users, 
-  Home,
-  Milk,
+  ClipboardList,
+  Syringe,
+  Video,
   ArrowRight
 } from "lucide-react";
 
@@ -12,37 +12,37 @@ const services = [
   {
     icon: Heart,
     title: "Pregnancy Care",
-    description: "Comprehensive prenatal care with regular checkups, ultrasounds, and expert guidance throughout your pregnancy journey.",
+    description: "Comprehensive prenatal care with regular checkups, ultrasounds, and expert guidance throughout your pregnancy.",
     color: "coral",
   },
   {
     icon: Baby,
-    title: "Newborn Care",
-    description: "Expert care for your newborn including health screenings, vaccinations, and developmental monitoring.",
+    title: "Newborn & Baby Care",
+    description: "Expert neonatal care including health screenings, growth monitoring, and developmental assessments.",
     color: "mint",
   },
   {
     icon: Stethoscope,
-    title: "Pediatric Services",
-    description: "Complete pediatric healthcare from infancy through adolescence with personalized treatment plans.",
+    title: "Mother Care & Recovery",
+    description: "Postnatal care for mothers including recovery support, health monitoring, and wellness consultations.",
     color: "lavender",
   },
   {
-    icon: Milk,
-    title: "Lactation Support",
-    description: "Professional lactation consultants to help with breastfeeding challenges and ensure healthy nutrition.",
+    icon: Syringe,
+    title: "Immunization Services",
+    description: "Complete vaccination program from birth to 5 years with schedule tracking and reminder notifications.",
     color: "peach",
   },
   {
-    icon: Home,
-    title: "Home Care Services",
-    description: "Trained professionals visit your home for post-delivery care, baby massage, and mother support.",
+    icon: Video,
+    title: "Online Consultation",
+    description: "Video consultations with our hospital doctors from the comfort of your home. Ideal for follow-ups and rural patients.",
     color: "mint",
   },
   {
-    icon: Users,
-    title: "Parenting Classes",
-    description: "Educational workshops on baby care, nutrition, child development, and parenting techniques.",
+    icon: ClipboardList,
+    title: "Health Records & Reports",
+    description: "Digital health records, lab reports, and prescription management — all securely stored and accessible online.",
     color: "coral",
   },
 ];
@@ -58,22 +58,20 @@ const ServicesSection = () => {
   return (
     <section id="services" className="section-padding bg-card">
       <div className="container-main px-4">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block bg-coral-light text-coral-dark px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            Our Services
+            Our Hospital Services
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
             Comprehensive Care for{" "}
             <span className="text-gradient">Every Stage</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            From the moment you discover your pregnancy to watching your child grow, 
-            we're here with expert care and unwavering support.
+            From pregnancy checkups to baby care and beyond — our hospital provides 
+            end-to-end services with qualified medical professionals.
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
@@ -90,19 +88,18 @@ const ServicesSection = () => {
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 {service.description}
               </p>
-              <a href="#" className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
-                Learn More
+              <a href="#contact" className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
+                Book Now
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
         <div className="text-center mt-16">
-          <button className="btn-primary">
-            View All Services
-          </button>
+          <a href="#contact" className="btn-primary">
+            Book an Appointment
+          </a>
         </div>
       </div>
     </section>

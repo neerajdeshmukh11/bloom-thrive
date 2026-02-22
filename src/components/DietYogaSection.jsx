@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Utensils, Dumbbell, ChevronDown, ChevronUp, Leaf, Apple, Fish, Milk } from "lucide-react";
+import { Utensils, Dumbbell, ChevronDown, ChevronUp, Leaf, Apple, Fish, Milk, AlertTriangle } from "lucide-react";
 
 const dietPlans = {
   "First Trimester": {
@@ -10,7 +10,7 @@ const dietPlans = {
       { name: "Iron Rich Foods", items: "Red meat, spinach, beans, dried fruits", icon: Apple },
     ],
     avoid: ["Raw eggs", "Unpasteurized dairy", "High-mercury fish", "Alcohol", "Excess caffeine"],
-    tips: "Eat small, frequent meals to combat nausea. Stay hydrated and take prenatal vitamins."
+    tips: "Eat small, frequent meals to manage nausea. Stay hydrated and consult your doctor about prenatal vitamins."
   },
   "Second Trimester": {
     foods: [
@@ -20,7 +20,7 @@ const dietPlans = {
       { name: "Complex Carbs", items: "Brown rice, oats, quinoa, sweet potato", icon: Apple },
     ],
     avoid: ["Processed foods", "Excess salt", "Sugary drinks", "Raw seafood", "Deli meats"],
-    tips: "Increase calorie intake by 300-350 calories. Focus on nutrient-dense foods."
+    tips: "Focus on nutrient-dense foods. Consult your doctor about calorie requirements for your specific needs."
   },
   "Third Trimester": {
     foods: [
@@ -29,28 +29,28 @@ const dietPlans = {
       { name: "Healthy Fats", items: "Avocado, olive oil, nuts, seeds", icon: Leaf },
       { name: "Calcium Boost", items: "Dairy, fortified plant milk, leafy greens", icon: Milk },
     ],
-    avoid: ["Spicy foods", "Large meals", "Lying down after eating", "Gas-causing foods"],
-    tips: "Eat smaller meals more frequently. Stay hydrated and monitor for swelling."
+    avoid: ["Spicy foods (if causing discomfort)", "Large meals", "Gas-causing foods"],
+    tips: "Eat smaller meals more frequently. Stay hydrated and discuss any dietary concerns with your doctor."
   }
 };
 
 const yogaExercises = {
   "First Trimester": [
-    { name: "Cat-Cow Stretch", benefit: "Relieves back pain, improves flexibility", duration: "5-10 minutes" },
     { name: "Gentle Walking", benefit: "Improves circulation, boosts mood", duration: "20-30 minutes" },
     { name: "Deep Breathing", benefit: "Reduces stress, improves oxygen flow", duration: "10 minutes" },
-    { name: "Seated Forward Bend", benefit: "Stretches hamstrings, calms mind", duration: "5 minutes" },
+    { name: "Gentle Stretching", benefit: "Relieves tension, improves flexibility", duration: "10 minutes" },
+    { name: "Relaxation", benefit: "Calms mind, reduces anxiety", duration: "10 minutes" },
   ],
   "Second Trimester": [
-    { name: "Prenatal Yoga Flow", benefit: "Builds strength, improves balance", duration: "20-30 minutes" },
-    { name: "Butterfly Pose", benefit: "Opens hips, relieves tension", duration: "5-10 minutes" },
-    { name: "Side-Lying Leg Lifts", benefit: "Strengthens legs and hips", duration: "10 minutes" },
-    { name: "Supported Triangle Pose", benefit: "Stretches sides, improves balance", duration: "5 minutes" },
+    { name: "Prenatal Yoga (with guidance)", benefit: "Builds strength, improves balance", duration: "20-30 minutes" },
+    { name: "Gentle Swimming", benefit: "Low-impact full body exercise", duration: "20 minutes" },
+    { name: "Pelvic Floor Exercises", benefit: "Strengthens pelvic muscles", duration: "10 minutes" },
+    { name: "Light Walking", benefit: "Maintains fitness safely", duration: "20-30 minutes" },
   ],
   "Third Trimester": [
-    { name: "Supported Squats", benefit: "Prepares for labor, opens pelvis", duration: "5-10 minutes" },
+    { name: "Breathing Exercises", benefit: "Prepares for labor breathing", duration: "15 minutes" },
     { name: "Pelvic Floor Exercises", benefit: "Strengthens for delivery", duration: "10 minutes" },
-    { name: "Wall Push-Ups", benefit: "Maintains arm strength safely", duration: "5 minutes" },
+    { name: "Gentle Stretching", benefit: "Relieves back and hip tension", duration: "10 minutes" },
     { name: "Relaxation & Meditation", benefit: "Mental preparation for birth", duration: "15-20 minutes" },
   ]
 };
@@ -69,14 +69,15 @@ const DietYogaSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-flex items-center gap-2 bg-mint-light text-mint-dark px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <Leaf className="w-4 h-4" />
-            Wellness Guide
+            General Wellness Information
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
-            Diet & Yoga Plans for{" "}
-            <span className="text-gradient">Every Stage</span>
+            Diet & Exercise{" "}
+            <span className="text-gradient">Guidelines</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Personalized nutrition advice and safe exercises tailored to each trimester of your pregnancy journey.
+            General nutrition information and safe exercise suggestions for each trimester. 
+            Always follow your doctor's specific advice.
           </p>
         </div>
 
@@ -107,7 +108,7 @@ const DietYogaSection = () => {
               }`}
             >
               <Utensils className="w-5 h-5" />
-              Diet Plan
+              Diet Information
             </button>
             <button
               onClick={() => setActiveTab("yoga")}
@@ -116,7 +117,7 @@ const DietYogaSection = () => {
               }`}
             >
               <Dumbbell className="w-5 h-5" />
-              Yoga & Exercise
+              Exercise Guide
             </button>
           </div>
         </div>
@@ -125,10 +126,9 @@ const DietYogaSection = () => {
         <div className="max-w-4xl mx-auto">
           {activeTab === "diet" ? (
             <div className="space-y-6 animate-fade-in">
-              {/* Recommended Foods */}
               <div className="bg-gradient-hero rounded-3xl p-8">
                 <h3 className="text-xl font-display font-bold text-foreground mb-6">
-                  Recommended Foods
+                  Generally Recommended Foods
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {dietPlans[activeTrimester].foods.map((food) => (
@@ -145,14 +145,13 @@ const DietYogaSection = () => {
                 </div>
               </div>
 
-              {/* Foods to Avoid */}
               <div 
                 className="bg-coral-light rounded-3xl overflow-hidden cursor-pointer"
                 onClick={() => setExpandedSection(expandedSection === 'avoid' ? null : 'avoid')}
               >
                 <div className="p-6 flex items-center justify-between">
                   <h3 className="text-xl font-display font-bold text-coral-dark">
-                    Foods to Avoid
+                    Foods Generally to Avoid
                   </h3>
                   {expandedSection === 'avoid' ? (
                     <ChevronUp className="w-6 h-6 text-coral-dark" />
@@ -173,9 +172,8 @@ const DietYogaSection = () => {
                 )}
               </div>
 
-              {/* Tips */}
               <div className="bg-mint-light rounded-3xl p-6">
-                <h3 className="font-display font-bold text-mint-dark mb-2">💡 Pro Tip</h3>
+                <h3 className="font-display font-bold text-mint-dark mb-2">💡 General Tip</h3>
                 <p className="text-mint-dark">{dietPlans[activeTrimester].tips}</p>
               </div>
             </div>
@@ -193,20 +191,26 @@ const DietYogaSection = () => {
                     <h4 className="font-display font-bold text-foreground text-lg">{exercise.name}</h4>
                     <p className="text-muted-foreground">{exercise.benefit}</p>
                   </div>
-                  <div className="bg-card px-4 py-2 rounded-full shadow-soft">
+                  <div className="bg-card px-4 py-2 rounded-full shadow-soft hidden sm:block">
                     <span className="text-sm font-medium text-foreground">{exercise.duration}</span>
                   </div>
                 </div>
               ))}
-
-              <div className="bg-lavender rounded-3xl p-6 mt-6">
-                <h3 className="font-display font-bold text-accent-foreground mb-2">⚠️ Safety First</h3>
-                <p className="text-accent-foreground">
-                  Always consult your doctor before starting any exercise routine. Avoid lying flat on your back after the first trimester. Stop if you feel dizzy, short of breath, or experience pain.
-                </p>
-              </div>
             </div>
           )}
+
+          {/* Universal Disclaimer */}
+          <div className="mt-8 bg-peach rounded-3xl p-6 flex items-start gap-3">
+            <AlertTriangle className="w-6 h-6 text-coral-dark flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-display font-bold text-coral-dark mb-1">⚠️ Important Disclaimer</h3>
+              <p className="text-coral-dark text-sm">
+                All information provided here is for general awareness only and does not replace 
+                professional medical consultation. Always consult your doctor before making any 
+                changes to your diet or starting any exercise routine during pregnancy.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -116,11 +116,11 @@ const VaccinationTracker = () => {
             Vaccination Schedule
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
-            Complete Immunization{" "}
-            <span className="text-gradient">Tracker</span>
+            Hospital Vaccination{" "}
+            <span className="text-gradient">Schedule & Tracker</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Track your child's vaccinations from birth to 5 years. Never miss an important immunization with our smart reminder system.
+            Track your child's immunization schedule from birth to 5 years. Our hospital sends timely reminders for upcoming vaccinations.
           </p>
         </div>
 
@@ -230,9 +230,9 @@ const VaccinationTracker = () => {
               <div className="mt-8 p-4 bg-coral-light rounded-2xl flex items-start gap-3">
                 <AlertCircle className="w-5 h-5 text-coral-dark flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-coral-dark">Important Note</p>
+                <p className="font-semibold text-coral-dark">Disclaimer</p>
                   <p className="text-sm text-coral-dark/80">
-                    Always consult with your pediatrician before vaccinations. Some vaccines may have specific timing requirements based on your child's health.
+                    This schedule is for general awareness only. Always consult with your pediatrician at the hospital for the exact vaccination plan suited to your child's health needs.
                   </p>
                 </div>
               </div>
