@@ -1,61 +1,81 @@
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Shield, Clock, Users, Award } from "lucide-react";
 import heroImage from "@/assets/hero-mother-child.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen bg-gradient-hero overflow-hidden pt-20">
+    <section className="relative min-h-screen bg-gradient-hero overflow-hidden pt-32">
       {/* Decorative Elements */}
-      <div className="absolute top-32 left-10 w-32 h-32 bg-coral-light rounded-full opacity-60 animate-float blur-xl" />
-      <div className="absolute top-48 right-20 w-48 h-48 bg-mint-light rounded-full opacity-60 animate-float-delayed blur-xl" />
+      <div className="absolute top-40 left-10 w-32 h-32 bg-coral-light rounded-full opacity-60 animate-float blur-xl" />
+      <div className="absolute top-56 right-20 w-48 h-48 bg-mint-light rounded-full opacity-60 animate-float-delayed blur-xl" />
       <div className="absolute bottom-32 left-1/4 w-24 h-24 bg-lavender rounded-full opacity-50 animate-float blur-xl" />
 
       <div className="container-main relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)] py-12 px-4">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-140px)] py-12 px-4">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in">
             <div className="inline-flex items-center gap-2 bg-coral-light text-coral-dark px-4 py-2 rounded-full text-sm font-semibold">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              Trusted by 10,000+ Happy Families
+              🏥 Trusted Hospital for Mother & Child Care
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight">
-              Expert Care for{" "}
-              <span className="text-gradient">Mom & Baby</span>{" "}
-              Every Step of the Way
+              Complete Hospital Care for{" "}
+              <span className="text-gradient">Mom & Baby</span>
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
-              From pregnancy to parenthood, we provide comprehensive healthcare services 
-              with compassionate professionals dedicated to nurturing the health and 
-              happiness of mothers and children.
+              A professional mother and child care hospital providing patient registration, 
+              doctor consultations, digital health records, vaccination tracking, and 
+              comprehensive care — all under one roof.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="btn-primary flex items-center justify-center gap-2 group">
-                Get Started
+              <a href="#contact" className="btn-primary flex items-center justify-center gap-2 group">
+                Book Appointment
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="btn-outline flex items-center justify-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                  <Play className="w-4 h-4 text-primary-foreground ml-0.5" />
-                </div>
-                Watch Our Story
-              </button>
+              </a>
+              <a href="#services" className="btn-outline flex items-center justify-center gap-2">
+                Our Services
+              </a>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
-              <div>
-                <h3 className="text-3xl font-display font-bold text-foreground">15+</h3>
-                <p className="text-muted-foreground text-sm">Years Experience</p>
+            {/* Hospital Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-border">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-coral-light flex items-center justify-center">
+                  <Award className="w-5 h-5 text-coral-dark" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-bold text-foreground">15+</h3>
+                  <p className="text-muted-foreground text-xs">Years Experience</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-3xl font-display font-bold text-foreground">50+</h3>
-                <p className="text-muted-foreground text-sm">Expert Doctors</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-mint-light flex items-center justify-center">
+                  <Users className="w-5 h-5 text-mint-dark" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-bold text-foreground">50+</h3>
+                  <p className="text-muted-foreground text-xs">Expert Doctors</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-3xl font-display font-bold text-foreground">98%</h3>
-                <p className="text-muted-foreground text-sm">Happy Families</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-lavender flex items-center justify-center">
+                  <Shield className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-bold text-foreground">10K+</h3>
+                  <p className="text-muted-foreground text-xs">Happy Families</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-peach flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-coral-dark" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-display font-bold text-foreground">24/7</h3>
+                  <p className="text-muted-foreground text-xs">Emergency Care</p>
+                </div>
               </div>
             </div>
           </div>
@@ -63,14 +83,12 @@ const HeroSection = () => {
           {/* Right Content - Hero Image */}
           <div className="relative animate-fade-in">
             <div className="relative">
-              {/* Main Image */}
               <div className="relative rounded-[3rem] overflow-hidden shadow-glow">
                 <img
                   src={heroImage}
-                  alt="Mother caring for baby"
+                  alt="Mother and child at hospital"
                   className="w-full h-auto object-cover"
                 />
-                {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
               </div>
 
@@ -78,11 +96,11 @@ const HeroSection = () => {
               <div className="absolute -bottom-6 -left-6 bg-card rounded-2xl p-4 shadow-medium animate-float">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-mint-light flex items-center justify-center">
-                    <span className="text-2xl">👶</span>
+                    <span className="text-2xl">🩺</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">Baby Care</p>
-                    <p className="text-sm text-muted-foreground">24/7 Support</p>
+                    <p className="font-semibold text-foreground">Doctor On Call</p>
+                    <p className="text-sm text-muted-foreground">24/7 Available</p>
                   </div>
                 </div>
               </div>
@@ -91,11 +109,11 @@ const HeroSection = () => {
               <div className="absolute -top-4 -right-4 bg-card rounded-2xl p-4 shadow-medium animate-float-delayed">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-coral-light flex items-center justify-center">
-                    <span className="text-2xl">🤰</span>
+                    <span className="text-2xl">📋</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground">Pregnancy</p>
-                    <p className="text-sm text-muted-foreground">Expert Guidance</p>
+                    <p className="font-semibold text-foreground">Digital Records</p>
+                    <p className="text-sm text-muted-foreground">100% Secure</p>
                   </div>
                 </div>
               </div>

@@ -2,19 +2,19 @@ import { useState, useRef, useEffect } from "react";
 import { MessageCircle, Send, X, Bot, User, Minimize2, Maximize2 } from "lucide-react";
 
 const quickReplies = [
-  "Pregnancy symptoms",
-  "Baby feeding tips",
-  "Vaccination schedule",
-  "Diet recommendations",
-  "When to see a doctor"
+  "Hospital services",
+  "Book appointment",
+  "Visiting hours",
+  "Find a branch",
+  "Vaccination schedule"
 ];
 
 const botResponses = {
-  "pregnancy symptoms": "Common pregnancy symptoms include morning sickness, fatigue, breast tenderness, and frequent urination. If you experience severe symptoms like heavy bleeding or severe pain, please consult a doctor immediately. Would you like tips on managing morning sickness?",
-  "baby feeding tips": "For newborns, breastfeeding is recommended for the first 6 months. Feed on demand, usually every 2-3 hours. Watch for hunger cues like rooting and hand-to-mouth movements. Keep baby upright after feeding to prevent reflux. Need specific advice?",
-  "vaccination schedule": "Your baby's vaccination journey starts at birth with BCG and Hepatitis B. Key vaccines at 6, 10, and 14 weeks include DTaP, IPV, and PCV. I can help you track your child's complete immunization schedule!",
-  "diet recommendations": "During pregnancy, focus on folic acid (leafy greens), iron (lean meats, spinach), calcium (dairy), and omega-3s (fish, walnuts). Avoid raw eggs, unpasteurized dairy, and high-mercury fish. Stay hydrated!",
-  "when to see a doctor": "See a doctor immediately if you experience: heavy vaginal bleeding, severe abdominal pain, high fever, reduced baby movements, severe headaches with vision changes, or signs of preterm labor. Don't hesitate to seek help!"
+  "hospital services": "Our hospital provides: Patient Registration, Appointment Booking, Doctor Consultations, Vaccination Tracking, Digital Health Records, Prescription Upload, and Online Video Consultations. Visit our Services section for full details!",
+  "book appointment": "You can book an appointment through our online booking system. Simply go to the 'Book Appointment' section, select your department, choose a doctor, and pick your preferred date & time. You can also call us at +91 1234 567 890.",
+  "visiting hours": "General visiting hours are 10:00 AM to 12:00 PM and 4:00 PM to 6:00 PM. ICU/NICU visiting is limited to immediate family. Emergency services are available 24/7.",
+  "find a branch": "Use our Hospital Branch Locator to find the nearest branch. We have multiple branches across the city. Each branch page shows available services, doctors, and directions.",
+  "vaccination schedule": "We follow the standard immunization schedule from birth to 5 years. Visit our Vaccination Tracker section to see the complete schedule and track your child's vaccinations. Our staff will also send you timely reminders.",
 };
 
 const ChatbotWidget = () => {
@@ -24,7 +24,7 @@ const ChatbotWidget = () => {
     {
       id: 1,
       type: "bot",
-      text: "Hello! 👋 I'm your MomKidCare assistant. I'm here to help you with pregnancy tips, baby care advice, and health information. How can I assist you today?",
+      text: "Hello! 👋 Welcome to MomKidCare Hospital. I can help you with hospital information, appointment booking, and general queries. How can I assist you?",
       time: new Date()
     }
   ]);
@@ -44,7 +44,6 @@ const ChatbotWidget = () => {
     const messageText = text || inputValue;
     if (!messageText.trim()) return;
 
-    // Add user message
     const userMessage = {
       id: messages.length + 1,
       type: "user",
@@ -55,10 +54,9 @@ const ChatbotWidget = () => {
     setInputValue("");
     setIsTyping(true);
 
-    // Simulate bot response
     setTimeout(() => {
       const lowerText = messageText.toLowerCase();
-      let response = "Thank you for your question! For detailed medical advice, I recommend consulting with our doctors through our Online Consultation feature. Is there anything specific I can help you with?";
+      let response = "Thank you for reaching out! For detailed medical queries, please book an appointment with our doctors or call our helpline at +91 1234 567 890. I can help with hospital information and general queries.";
       
       for (const [key, value] of Object.entries(botResponses)) {
         if (lowerText.includes(key)) {
@@ -94,11 +92,9 @@ const ChatbotWidget = () => {
           className="fixed bottom-24 right-8 w-16 h-16 bg-primary rounded-full shadow-glow flex items-center justify-center hover:scale-110 transition-transform z-50 group"
         >
           <MessageCircle className="w-7 h-7 text-primary-foreground" />
-          <span className="absolute -top-2 -right-2 w-5 h-5 bg-green-500 rounded-full border-2 border-white" />
-          
-          {/* Tooltip */}
+          <span className="absolute -top-2 -right-2 w-5 h-5 bg-green-500 rounded-full border-2 border-card" />
           <span className="absolute right-full mr-3 bg-card text-foreground px-4 py-2 rounded-xl shadow-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
-            Chat with us! 💬
+            Hospital Help Desk 💬
           </span>
         </button>
       )}
@@ -120,8 +116,8 @@ const ChatbotWidget = () => {
               </div>
               {!isMinimized && (
                 <div>
-                  <h4 className="font-semibold text-primary-foreground">MomKidCare Assistant</h4>
-                  <p className="text-xs text-primary-foreground/80">Always here to help</p>
+                  <h4 className="font-semibold text-primary-foreground">Hospital Help Desk</h4>
+                  <p className="text-xs text-primary-foreground/80">General information only</p>
                 </div>
               )}
             </div>
@@ -197,6 +193,11 @@ const ChatbotWidget = () => {
                 <div ref={messagesEndRef} />
               </div>
 
+              {/* Disclaimer */}
+              <div className="px-4 py-1.5 bg-peach/50 text-center">
+                <p className="text-[10px] text-coral-dark">For medical advice, please consult a doctor.</p>
+              </div>
+
               {/* Quick Replies */}
               <div className="px-4 py-2 flex gap-2 overflow-x-auto border-t border-border">
                 {quickReplies.map((reply) => (
@@ -218,7 +219,7 @@ const ChatbotWidget = () => {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Type your message..."
+                    placeholder="Ask about hospital services..."
                     className="flex-1 px-4 py-3 rounded-xl bg-muted border-none text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
                   />
                   <button
