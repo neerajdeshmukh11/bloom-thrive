@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const signup = async (email, password, name, role) => {
+    if (!auth) throw new Error("Firebase is not configured. Please set up your .env file with Firebase credentials.");
     const result = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(result.user, { displayName: name });
     localStorage.setItem(`role_${result.user.uid}`, role);
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password, role) => {
+    if (!auth) throw new Error("Firebase is not configured. Please set up your .env file with Firebase credentials.");
     const result = await signInWithEmailAndPassword(auth, email, password);
     const storedRole = localStorage.getItem(`role_${result.user.uid}`);
     if (storedRole && storedRole !== role) {
@@ -41,10 +43,14 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     setUserRole(null);
-    return signOut(auth);
+    if (auth) return signOut(auth);
   };
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       if (user) {
