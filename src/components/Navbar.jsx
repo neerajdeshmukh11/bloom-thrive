@@ -47,9 +47,9 @@ const Navbar = () => {
             <span className="hidden sm:inline">Mon - Sat: 9:00 AM - 8:00 PM</span>
           </div>
           <div className="flex items-center gap-3">
-            <a href="#" className="hover:underline">Patient Portal</a>
+            <Link to="/patient/login" className="hover:underline">Patient Portal</Link>
             <span>|</span>
-            <a href="#" className="hover:underline">Doctor Login</a>
+            <Link to="/doctor/login" className="hover:underline">Doctor Login</Link>
           </div>
         </div>
       </div>
